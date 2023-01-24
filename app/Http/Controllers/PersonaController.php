@@ -45,8 +45,7 @@ class PersonaController extends Controller
         $persona->estado = '1';
         $persona->save();
 
-        $datos['personas'] = Persona::where("estado","=","1")->select("id","nombre","apellido_paterno","apellido_materno","dni")->get();
-        return view('persona.listar',$datos);
+        return redirect('persona');
     }
 
     /**
@@ -84,8 +83,7 @@ class PersonaController extends Controller
         $datosPersona = request()->except(['_token','_method']);
         Persona::where('id','=',$id)->update($datosPersona);
 
-        $datos['personas'] = Persona::where("estado","=","1")->select("id","nombre","apellido_paterno","apellido_materno","dni")->get();
-        return view('persona.listar',$datos);
+        return redirect('persona');
     }
 
     /**
